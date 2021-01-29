@@ -12,9 +12,29 @@ class CarController():
     self.es_lkas_cnt = -1
     self.fake_button_prev = 0
     self.steer_rate_limited = False
-
+    self.throttle_cnt = -1  
+    
     self.packer = CANPacker(DBC[CP.carFingerprint]['pt'])
 
+    self.params = CarControllerParams()
+    
+    #SUBARU STOP AND GO flags and vars
+    self.prev_cruise_state = -1
+    self.cruise_state_change_time = -1
+    self.sng_throttle_tap_cnt = 0
+    self.sng_resume_acc = False
+    self.sng_has_recorded_distance = False
+    self.sng_distance_threshold = self.params.SNG_DISTANCE_LIMIT
+
+    #SUBARU STOP AND GO - Pre-Global only
+    self.prev_close_distance = -1
+
+    #SUBARU NON-EPB
+    self.brake_pedal_cnt = -1
+    self.prev_standstill = False
+    self.standstill_transition_timestamp = -1
+    self.sng_send_fake_speed = False
+    
   def update(self, enabled, CS, frame, actuators, pcm_cancel_cmd, visual_alert, left_line, right_line):
 
     can_sends = []
