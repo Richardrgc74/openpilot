@@ -16,7 +16,7 @@ class CarController():
     
     self.packer = CANPacker(DBC[CP.carFingerprint]['pt'])
 
-    self.params = CarControllerParams()
+    self.params = CarControllerParams
     
     #SUBARU STOP AND GO flags and vars
     self.prev_cruise_state = -1
