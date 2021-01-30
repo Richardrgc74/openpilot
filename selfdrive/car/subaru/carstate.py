@@ -69,7 +69,7 @@ class CarState(CarStateBase):
     #------------------------------------------------
     
     if self.car_fingerprint in PREGLOBAL_CARS:
-      ret.steerError = cp.vl["Steering_Torque"]["LKA_Lockout"] == 1
+      ret.steerError = cp.vl["Steering_Torque"]["Steer_Error_1"] == 1
       self.button = cp_cam.vl["ES_CruiseThrottle"]["Button"]
       self.ready = not cp_cam.vl["ES_DashStatus"]["Not_Ready_Startup"]
       self.es_accel_msg = copy.copy(cp_cam.vl["ES_CruiseThrottle"])
@@ -189,7 +189,7 @@ class CarState(CarStateBase):
 
     if CP.carFingerprint in PREGLOBAL_CARS:
       signals += [
-        ("LKA_Lockout", "Steering_Torque", 0),
+        ("Steer_Error_1", "Steering_Torque", 0),
       ]
     else:
       signals += [
