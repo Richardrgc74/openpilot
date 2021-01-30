@@ -2,7 +2,7 @@ from selfdrive.car import apply_std_steer_torque_limits
 from selfdrive.car.subaru import subarucan
 from selfdrive.car.subaru.values import DBC, PREGLOBAL_CARS, CarControllerParams
 from opendbc.can.packer import CANPacker
-
+import time
 
 class CarController():
   def __init__(self, dbc_name, CP, VM):
