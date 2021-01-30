@@ -75,7 +75,7 @@ class CarState(CarStateBase):
       self.es_accel_msg = copy.copy(cp_cam.vl["ES_CruiseThrottle"])
       self.throttle_msg = copy.copy(cp.vl["Throttle"])
 
-      #self.wiper_activated = cp.vl["Stalk"]["Wiper"] == 1
+      self.wiper_activated = cp.vl["Stalk"]["Wiper"] == 1
       #@LetsDuDiss 26 Dec 2020: Add signals to aid Subaru STOP AND GO on Preglobal
       self.car_follow = cp_cam.vl["ES_DashStatus"]['Car_Follow'] == 1
       self.close_distance = cp_cam.vl["ES_CruiseThrottle"]['Close_Distance']
